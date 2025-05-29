@@ -2,13 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nanditha Varshini E | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nanditha Varshini E - Portfolio</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
-  <!-- Navigation Bar -->
   <nav>
     <ul>
       <li><a href="#home">Home</a></li>
@@ -19,66 +17,98 @@
     </ul>
   </nav>
 
-  <!-- Profile Section -->
-  <section id="home" class="hero reveal">
-    <img src="Nanditha Photo.jpg" alt="Your Profile Photo" />
-    <h1>Nanditha Varshini E</h1>
+  <section id="home" class="hero">
+    <img src="Nanditha Photo.jpg" alt="Nanditha Varshini Photo" />
+     <h1>Nanditha Varshini E</h1>
     <h2>Salesforce Developer</h2>
-    <h2>Tech Enthusiastic Techie</h2>
-    <p>BTech in EEE | Associate Software Engineer @ Accenture</p>
+    <h2>Tech Enthusiastic - Techie</h2>
+    <div id="typing-role"></div>
+    <p>IEEE Student Branch Chair | ASE at Accenture | Salesforce Developer | Passionate about Technology & Leadership</p>
   </section>
 
-  <!-- Education -->
   <section id="education" class="reveal">
     <h2>🎓 Education</h2>
-    <p><strong>REVA University</strong> – B.Tech in Electrical and Electronics Engineering, 2024</p>
-  </section>
-
-  <!-- Career Experience -->
-  <section id="experience" class="reveal">
-    <h2>💼 Career Experience</h2>
-    <p2><strong> 
-        Salesforce Developer Intern
-       </strong> Smartbridge · Internship
-       Mar 2024 - Oct 2024 · 8 months</p2>
-    <p><strong>Associate Software Engineer</strong> at Accenture (2024 - Present)</p>
-  </section>
-
-  <!-- Skills -->
-  <section id="skills" class="reveal">
-    <h2>🛠️ Skills</h2>
     <ul>
-      <li>Apex, Salesforce, Salesforce Administration, Salesforce Testing
-        Salesforce Development, </li>
-      <li>Java, HTML, CSS, JavaScript</li>
-      <li>Automotive, Developer Ecosystem</li>
-       <li> GCP Dataflow, Google App Engine (GAE),  Google BigQuery, Google Cloud Compute Services</li>
-        <li>Google Cloud Data Fusion, 
-        Google Cloud Data Services, 
-        Google Cloud Platform Architecture</li>
-       <li> Google Cortex, 
-        Google Dataproc, 
-        Google Stackdriver, </li>
-        <li>High Tech Solutions, 
-        Google Cloud Network Services, 
-        Software Platforms,  
-        Talent Pipeline</li>
+      <li>BTech in EEE - REVA University (2020-2024)</li>
     </ul>
   </section>
 
-  <!-- Contact -->
-  <section id="contact" class="reveal">
-    <h2>📞 Contact +91-9845009177</h2>
-    <p>Email: <a href="#" target="_blank"></a>nvarshini21@gmail.com</p>
-    <p>LinkedIn: <a href="#" target="_blank">https://www.linkedin.com/in/nanditha-varshini-5b6301210/</a></p>
+  <section id="experience" class="reveal">
+    <h2>💼 Career Experience</h2>
+    <p><strong>Salesforce Developer Intern</strong> – Smartbridge · Internship (Mar 2024 - Oct 2024 · 8 months)</p>
+    <p><strong>Associate Software Engineer</strong> – Accenture (2024 - Present)</p>
   </section>
 
-  <!-- Footer -->
+  <section id="skills" class="reveal">
+    <h2>🛠️ Skills</h2>
+    <ul>
+      <li>Apex, Salesforce, Salesforce Administration, Salesforce Testing, Salesforce Development</li>
+      <li>Java, HTML, CSS, JavaScript</li>
+      <li>Automotive, Developer Ecosystem</li>
+      <li>GCP Dataflow, Google App Engine (GAE), Google BigQuery, Google Cloud Compute Services</li>
+      <li>Google Cloud Data Fusion, Google Cloud Data Services, Google Cloud Platform Architecture</li>
+      <li>Google Cortex, Google Dataproc, Google Stackdriver</li>
+      <li>High Tech Solutions, Google Cloud Network Services, Software Platforms, Talent Pipeline</li>
+    </ul>
+  </section>
+
+  <section id="contact" class="reveal">
+    <h2>📞 Contact +91-9845009177</h2>
+    <p>Email: nvarshini21@gmail.com</p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/nanditha-varshini-5b6301210/">nanditha-varshini</a></p>
+  </section>
+
   <footer>
-    <p>© 2025 Nanditha Varshini E</p>
+    &copy; 2025 Nanditha Varshini E. All rights reserved.
   </footer>
 
-  <!-- JS for animation -->
-  <script src="script.js"></script>
+  <script>
+    const roles = ["Engineer", "Leader", "Visionary", "Innovator"];
+    let i = 0, j = 0;
+    let isDeleting = false;
+
+    function typeEffect() {
+      const target = document.getElementById("typing-role");
+      const currentRole = roles[i];
+
+      if (isDeleting) {
+        j--;
+      } else {
+        j++;
+      }
+
+      target.textContent = currentRole.substring(0, j);
+
+      if (!isDeleting && j === currentRole.length) {
+        isDeleting = true;
+        setTimeout(typeEffect, 1000);
+      } else if (isDeleting && j === 0) {
+        isDeleting = false;
+        i = (i + 1) % roles.length;
+        setTimeout(typeEffect, 200);
+      } else {
+        setTimeout(typeEffect, isDeleting ? 50 : 100);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", typeEffect);
+
+    const reveals = document.querySelectorAll(".reveal");
+
+    function revealOnScroll() {
+      for (let i = 0; i < reveals.length; i++) {
+        const windowHeight = window.innerHeight;
+        const revealTop = reveals[i].getBoundingClientRect().top;
+        const revealPoint = 150;
+
+        if (revealTop < windowHeight - revealPoint) {
+          reveals[i].classList.add("active");
+        }
+      }
+    }
+
+    window.addEventListener("scroll", revealOnScroll);
+    window.addEventListener("load", revealOnScroll);
+  </script>
 </body>
 </html>
